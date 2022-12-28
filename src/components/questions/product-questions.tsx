@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import QuestionCard from '@/components/questions/question-card';
 import Pagination from '@/components/ui/pagination';
 import { useEffect, useState } from 'react';
-import { useQuestions } from '@/framework/product';
+// import { useQuestions } from '@/framework/product';
 import Search from '@/components/ui/search/search';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { useRouter } from 'next/router';
@@ -28,12 +28,12 @@ const ProductQuestions: React.FC<ProductQuestionsProps> = ({
   const { openModal } = useModalAction();
   const { query } = useRouter();
   const { isAuthorized } = useUser();
-  const { questions, paginatorInfo, isLoading } = useQuestions({
-    product_id: productId,
-    limit: 5,
-    page,
-    ...(!isEmpty(query?.text) && { question: query.text?.toString() }),
-  });
+  // const { questions, paginatorInfo, isLoading } = useQuestions({
+  //   product_id: productId,
+  //   limit: 5,
+  //   page,
+  //   ...(!isEmpty(query?.text) && { question: query.text?.toString() }),
+  // });
   useEffect(() => {
     setPage(1);
   }, [query.text]);
@@ -105,7 +105,7 @@ const ProductQuestions: React.FC<ProductQuestionsProps> = ({
               'mx-auto max-w-screen-xl': boxedLayout,
             })}
           >
-            {questions?.map((question:any) => (
+            {questions?.map((question: any) => (
               <QuestionCard
                 key={`question-no-${question.id}`}
                 question={question}
